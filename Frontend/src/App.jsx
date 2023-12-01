@@ -1,16 +1,15 @@
-import { useState } from 'react'
 import './App.css'
-
-import Preference from './layout/preference'
 import Inicio from './layout/login'
+import { Route, Routes } from 'react-router-dom'
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-
-    </>
+    <div>
+      <Routes>
+      <Route path="/" Component={Inicio} />
+      </Routes>
+    </div>
   )
 }
 
