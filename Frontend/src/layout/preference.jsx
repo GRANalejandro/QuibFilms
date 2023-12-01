@@ -1,7 +1,9 @@
-const Preference = () => {
-    return(
-        <></>
-    )
-}
+import React from 'react'
 
-export default Preference;
+export default function Preference() {
+  return (
+    <div>
+      
+    </div>
+  )
+}

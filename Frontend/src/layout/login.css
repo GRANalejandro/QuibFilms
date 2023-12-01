@@ -1,0 +1,8 @@
+.Login-1{  
+    width: 100%;
+    height: 100vh;
+    background-image: url('../components/login/Login/imagen-login.jpg');
+    background-size: cover; /* Hace que la imagen cubra todo el contenedor */
+    background-position: center; /* Centra la imagen dentro del contenedor */
+
+}

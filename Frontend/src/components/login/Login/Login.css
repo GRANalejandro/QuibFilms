@@ -1,0 +1,27 @@
+.Login-2 {
+    width: 100%;
+    height: 100%;
+}
+
+  .row1 {
+    position: absolute;
+    top: 50%; /* Coloca el borde superior del elemento al centro vertical */
+    left: 50%; /* Coloca el borde izquierdo del elemento al centro horizontal */
+    transform: translate(-50%, -50%); /* Centra el elemento completamente */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(155, 155, 155, 0.897);
+    width: 300px;
+    height: 300px;
+    gap: 20px;
+  }
+  
+
+.Formulario{
+    display: flex;
+    align-items: center ;
+    justify-content: center;
+    gap: 21px;
+}
