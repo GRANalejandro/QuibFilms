@@ -1,5 +1,9 @@
-const Main = () => {
-    <a href="/Main"></a>
-}
+export default function Main(){
+    return(
+        <>
+            <main className="main">
 
-export default Main;
+            </main>
+        </>
+    )
+}

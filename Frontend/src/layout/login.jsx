@@ -1,9 +1,11 @@
+import '../sass/login.scss'
+
 function Inicio (){
     return(
         <>
-            
+
         </>
     )
 }
 
-export default Login;
+export default Inicio;

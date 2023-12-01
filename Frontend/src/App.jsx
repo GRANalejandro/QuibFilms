@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import './App.css'
-import Login from './layout/login'
+
 import Preference from './layout/preference'
-import RoutePrivate from './routerPrivate/routerPrivate'
+import Inicio from './layout/login'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <Login/>
+
     </>
   )
 }
