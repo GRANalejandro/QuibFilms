@@ -23,13 +23,12 @@
             height: 90px;
             white-space: nowrap;
             overflow-x: auto;
-            border: 1px solid black;
-
             &__item{
+                border-radius: 20px;
                 min-width: 132px;
                 height: 100%;
                 margin-right: 10px;
-                border: 1px solid black;
+                // border: 1px solid black;
             }
         }
     }
