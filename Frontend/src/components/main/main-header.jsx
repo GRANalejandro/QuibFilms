@@ -1,13 +1,12 @@
 import { useState } from 'react'; 
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'; 
 import { FaBars, FaSearch } from 'react-icons/fa'; 
-import { AppContext } from "../../context";
+
 
 // import { FaSearch } from '@fortawesome';
  
 const NavigationBar = () => { 
   const [expanded, setExpanded] = useState(false); 
-  const { inputValue, setInputValue } = useContext(AppContext);
 
   const toggleNavbar = () => { 
     setExpanded(!expanded); 
@@ -26,7 +25,7 @@ const NavigationBar = () => {
   </Navbar.Brand>
   <Form className='main-header__form d-flex'  inline>
       <Button variant="outline-success"><FaSearch /></Button>
-      <FormControl type="text" value={inputValue} onChange={handleInputChange} placeholder="Search" className="mr-sm-2" />
+      <FormControl type="text" placeholder="Search" className="mr-sm-2" />
     </Form>
   <Navbar.Toggle aria-controls="main-header__toggler basic-navbar-nav" onClick={toggleNavbar}>
     <FaBars />

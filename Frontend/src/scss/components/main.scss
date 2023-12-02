@@ -45,3 +45,13 @@
         border: 1px solid lightcoral;
     }
 }
+
+.modal-input{
+    position: fixed;
+    inset: calc(0% - -56px) 0 0 0;
+    background-color: #032342;
+}
+
+.main:has(.active){
+    max-height: 100vh;
+}

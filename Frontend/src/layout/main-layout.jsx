@@ -1,7 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
 
-import { AppContext } from "../context";
-import {AppContextProvider } from "../context"
 import MainFooter from "../components/main/main-footer";
 import MainHeader from "../components/main/main-header";
 
@@ -13,11 +11,8 @@ import axios from 'axios';
 
 export default function MainLayout() {
     
-    
-    const { inputValue, setInputValue } = useContext(AppContext);
-    const [filteredMovies, setFilteredMovies] = useState([]);
 
-    const allMovies = obRomance.concat(obAventura, obAccion); // Combina las listas de películas
+    // Combina las listas de películas
     
     const obRomance = [
         {
@@ -129,23 +124,39 @@ export default function MainLayout() {
 
 
     // Ejecuta la búsqueda cuando el valor del input cambia
-    useEffect(() => {
-        buscarPorInput();
-    }, [inputValue]);
+
 
 
 
 
 
     // if Value.include(obAventura.title) && Value.include(obAventura.clasification)
+    const [isInputActive, setIsInputActive] = useState(false);
+
+
+    const handleInputFocus = () => {
+        setIsInputActive(true);
+      };
+    
+      const handleInputBlur = () => {
+        setIsInputActive(false);
+      };
+    
 
     return (
         <>
-            <AppContextProvider>
 
             <MainHeader />
+            <input
+                type="text"
+                onFocus={handleInputFocus}
+                onBlur={handleInputBlur}
+            />
 
             <main className="main container-fluid p-0">
+                <section className={`modal-input ${isInputActive ? 'active' : ''}`}>
+
+                </section>
                 <section className="background container-fluid p-0 border">
                     <article className="background__item"></article>
                     <article className="background__item"></article>
@@ -170,15 +181,13 @@ export default function MainLayout() {
                             Las 10 peliculas Mas vistas Hoy
                         </span>
                         <div className="movies__content__previews">
-                            {filteredMovies.map((movie, index) => (
-                                <div key={index} className="movies__content__previews__item">
-                                    {/* Aquí puedes mostrar la información de cada película */}
-                                    <img src={movie.photo} alt={movie.title} />
-                                    <h3>{movie.title}</h3>
-                                    <p>{movie.description}</p>
-                                    <p>Clasificación: {movie.clasification}</p>
-                                </div>
-                            ))}
+                            <div className="movies__content__previews__item"></div>
+                            <div className="movies__content__previews__item"></div>
+                            <div className="movies__content__previews__item"></div>
+                            <div className="movies__content__previews__item"></div>
+                            <div className="movies__content__previews__item"></div>
+                            <div className="movies__content__previews__item"></div>
+                            <div className="movies__content__previews__item"></div>
                         </div>
                     </article>
                     <article className="movies__content">
@@ -231,7 +240,6 @@ export default function MainLayout() {
             </main>
 
             <MainFooter />
-            </AppContextProvider>
 
         </>
     )

@@ -1,0 +1,4 @@
+#root:has(.active){
+    max-height: 100vh;
+    overflow: hidden;
+}
