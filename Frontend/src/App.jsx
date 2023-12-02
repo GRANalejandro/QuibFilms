@@ -9,9 +9,6 @@ import Inicio from './layout/login'
 
 
 
-
-
-
 function App() {
   const [count, setCount] = useState(0)
 
@@ -24,7 +21,8 @@ function App() {
         <Route path="/Principal" Component={MainLayout}/>
         <Route path='/Preferencias' Component={Preference}/>
         </Routes>
-      </div>
+      </div>
+      <Preference/>
     </>
   )
 }

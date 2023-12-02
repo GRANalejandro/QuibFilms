@@ -1,9 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react';
-
+import ImagenSection from'../img/imagen-section.jpg';
 import MainFooter from "../components/main/main-footer";
 import MainHeader from "../components/main/main-header";
 
-import axios from 'axios';
+// import axios from 'axios';
 
 export default function MainLayout() {
 
@@ -235,12 +235,17 @@ export default function MainLayout() {
                         </article>
                     </section>)
                 }
+<<<<<<< Updated upstream
 
                 <section className="background container-fluid p-0 border">
+=======
+            
+                <section className="background container-fluid p-0">
+>>>>>>> Stashed changes
                     <article className="background__item"></article>
                     <article className="background__item"></article>
                 </section>
-                <section className="movies container p-0 border">
+                <section className="movies container p-0">
                     <article className="movies__content">
                         <article className="movies__content">
                             <span className="movies_content_text">
@@ -346,8 +351,10 @@ export default function MainLayout() {
                     </article>
                 </section>
                 <section className="page-images container-fluid">
-                    <div className="article page-images__item"></div>
-                    <div className="article page-images__item"></div>
+                    <div className="article page-images__item">
+                        <img src={ImagenSection} alt="imagen section" />
+
+                    </div>
                 </section>
             </main>
 
