@@ -1,18 +1,20 @@
-import { createContext, useContext, useState } from 'react';
+// context.jsx
 
-const GlobalContext = createContext();
+import React, { createContext, useContext, useState } from 'react';
 
-export const GlobalContextProvider = ({ children }) => {
-  const [variable1, setVariable1] = useState('valorInicial1');
-  const [variable2, setVariable2] = useState('valorInicial2');
+const AppContext = createContext();
 
-  return (
-    <GlobalContext.Provider value={{ variable1, setVariable1, variable2, setVariable2 }}>
-      {children}
-    </GlobalContext.Provider>
-  );
+export const useAppContext = () => {
+  return useContext(AppContext);
 };
 
-export const useGlobalContext = () => {
-  return useContext(GlobalContext);
+export const AppContextProvider = ({ children }) => {
+  const [inputValue, setInputValue] = useState('');
+
+  const contextValue = {
+    inputValue,
+    setInputValue,
+  };
+
+  return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>;
 };

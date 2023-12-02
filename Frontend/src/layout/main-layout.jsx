@@ -1,15 +1,24 @@
+import React, { useState, useContext, useEffect } from 'react';
+
+import { AppContext } from "../context";
+import {AppContextProvider } from "../context"
 import MainFooter from "../components/main/main-footer";
 import MainHeader from "../components/main/main-header";
 
-import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 
 
 
 
-export default function MainLayout(){
+export default function MainLayout() {
+    
+    
+    const { inputValue, setInputValue } = useContext(AppContext);
+    const [filteredMovies, setFilteredMovies] = useState([]);
 
+    const allMovies = obRomance.concat(obAventura, obAccion); // Combina las listas de películas
+    
     const obRomance = [
         {
             photo: 'https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2019/07/diario-noa.jpg?tf=1080x',
@@ -109,9 +118,32 @@ export default function MainLayout(){
         }
     ];
 
-    return(
+    const buscarPorInput = () => {
+        const resultados = allMovies.filter((movie) =>
+          movie.title.toLowerCase().includes(inputValue.toLowerCase()) ||
+          movie.clasification.toLowerCase().includes(inputValue.toLowerCase())
+        );
+        setFilteredMovies(resultados);
+      };
+
+
+
+    // Ejecuta la búsqueda cuando el valor del input cambia
+    useEffect(() => {
+        buscarPorInput();
+    }, [inputValue]);
+
+
+
+
+
+    // if Value.include(obAventura.title) && Value.include(obAventura.clasification)
+
+    return (
         <>
-            <MainHeader/>
+            <AppContextProvider>
+
+            <MainHeader />
 
             <main className="main container-fluid p-0">
                 <section className="background container-fluid p-0 border">
@@ -138,13 +170,15 @@ export default function MainLayout(){
                             Las 10 peliculas Mas vistas Hoy
                         </span>
                         <div className="movies__content__previews">
-                            <div className="movies__content__previews__item"></div>
-                            <div className="movies__content__previews__item"></div>
-                            <div className="movies__content__previews__item"></div>
-                            <div className="movies__content__previews__item"></div>
-                            <div className="movies__content__previews__item"></div>
-                            <div className="movies__content__previews__item"></div>
-                            <div className="movies__content__previews__item"></div>
+                            {filteredMovies.map((movie, index) => (
+                                <div key={index} className="movies__content__previews__item">
+                                    {/* Aquí puedes mostrar la información de cada película */}
+                                    <img src={movie.photo} alt={movie.title} />
+                                    <h3>{movie.title}</h3>
+                                    <p>{movie.description}</p>
+                                    <p>Clasificación: {movie.clasification}</p>
+                                </div>
+                            ))}
                         </div>
                     </article>
                     <article className="movies__content">
@@ -196,7 +230,9 @@ export default function MainLayout(){
                 </section>
             </main>
 
-            <MainFooter/>
+            <MainFooter />
+            </AppContextProvider>
+
         </>
     )
 }
