@@ -1,18 +1,21 @@
 .footer{
-    border: 3px solid green;
+    background-color:$black;
     &__column{
-        border: 3px solid yellow;
+        margin: 25px 0;
         @include from(m){
-            border: 3px solid greenyellow;
+            margin: 50px 0;
         }
-        @include from(l){
-            border: 3px solid red;
-        }
-        @include from(xl){
-            border: 3px solid orange;
-        }
+    }
+    &__redes{
+        img{
+            margin:20px 15px;
+            @include from(m){
+                margin: 15px 20px 40px;
+            }
+    }
     }
     &__copy{
         text-align: center;
+        background-color: $gray;
     }
 }
