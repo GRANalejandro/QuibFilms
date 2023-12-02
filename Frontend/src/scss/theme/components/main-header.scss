@@ -25,5 +25,8 @@
         @include from(l){
             background-color: transparent;
         }
+        a{
+            color:$black;
+        }
     }
 }

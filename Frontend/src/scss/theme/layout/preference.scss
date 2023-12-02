@@ -1,7 +1,6 @@
 .preferences{
     display: flex;
     flex-direction: column;
-
     &__content{
         display: flex;
         padding: 4% 0% 0%;
@@ -16,21 +15,28 @@
         }
 
         &__category{
+            // border: 3px solid purple;
             display: flex;
             flex-direction: column;
             gap: 26px;
             flex: 1 1 0;
 
             &__items{
+                border-radius: 20px;
                 flex: 1 1 0;
-                min-height: 120px;
-                border: 1px solid black;
+                height: 85%;
+                img{
+                    border-radius: inherit;
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                }
             }
         }
         &__button{
-            height: 100px;
             border-radius: 0 0.6em 0.6em 0;
-            background-color: lightseagreen;
+            background-color: ($black, 0.5);
+            // color:$gray;
         }
     }
 }
