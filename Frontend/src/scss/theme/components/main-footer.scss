@@ -1,0 +1,18 @@
+.footer{
+    border: 3px solid green;
+    &__column{
+        border: 3px solid yellow;
+        @include from(m){
+            border: 3px solid greenyellow;
+        }
+        @include from(l){
+            border: 3px solid red;
+        }
+        @include from(xl){
+            border: 3px solid orange;
+        }
+    }
+    &__copy{
+        text-align: center;
+    }
+}
