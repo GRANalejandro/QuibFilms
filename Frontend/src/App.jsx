@@ -19,9 +19,9 @@ function App() {
     <>
       <div>
         <Routes>
-        <Route path="/" Component={Inicio} />
+        <Route path="/" Component={MainLayout} />
         <Route path="/Registro" Component={Registro}/>
-        <Route path="/Principal" Component={MainLayout}/>
+        <Route path="/Principal" Component={Inicio}/>
         <Route path='/Preferencias' Component={Preference}/>
         </Routes>
       </div>

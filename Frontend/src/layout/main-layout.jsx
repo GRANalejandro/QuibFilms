@@ -254,7 +254,7 @@ export default function MainLayout() {
                                         <div className="span movies__content__previews__item__text">
                                             <span>{title}</span>
                                         </div>
-                                        <div className="movies__content__previews__item__modal-element">
+                                        <div className={`movies__content__previews__item__modal-element ${isInputActive3 ? 'active--modal' : ''}`}>
                                             
                                         </div>
                                     </div>

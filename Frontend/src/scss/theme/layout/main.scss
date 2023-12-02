@@ -39,20 +39,18 @@
                 &__text{
                     overflow: hidden;
                 }
-                &__modal-element{
-
-                }
-                &__modal-element .active--modal{
-                    position: absolute;
-                    top: 0px;
-                    left: 100%;
-                    width: 200%;
-                    height: 200%;
-                    background-color: lightgreen;
-                }
             }
         }
     }
+}
+
+.active--modal{
+    position: absolute;
+    top: 0px;
+    left: 100%;
+    width: 200%;
+    height: 200%;
+    background-color: lightgreen;
 }
 
 .page-images{
