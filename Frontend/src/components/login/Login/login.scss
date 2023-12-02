@@ -1,0 +1,122 @@
+
+// Colors
+$greenSeaweed: #000D1A;
+$blueQueen: rgb(0, 0, 0);
+$redFire: rgb(243, 0, 24);
+
+// Fonts
+$fontAsap: 'Asap', sans-serif;
+
+
+
+.login {
+  overflow: hidden;
+  background-color: white;
+  padding: 40px 30px 30px 30px;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  transform: translate(-50%, -50%); /* Cambio de @include a transform */
+  transition: transform 300ms, box-shadow 300ms; /* Cambio de @include a transition */
+  box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
+  
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-top-left-radius: 40%;
+    border-top-right-radius: 45%;
+    border-bottom-left-radius: 35%;
+    border-bottom-right-radius: 40%;
+    z-index: -1;
+  }
+  
+  &::before {
+    left: 40%;
+    bottom: -130%;
+    background-color: rgba($blueQueen, 0.5);
+    animation: wawes 6s infinite linear; /* Corrección de @include */
+  }
+  
+  &::after {
+    left: 35%;
+    bottom: -125%;
+    background-color: rgba($greenSeaweed, 0.2);
+    animation: wawes 7s infinite; /* Corrección de @include */
+  }
+  
+  > input {
+    font-family: $fontAsap;
+    display: block;
+    border-radius: 5px;
+    font-size: 16px;
+    background: white;
+    width: calc(100% - 20px); /* Actualización del ancho para considerar los paddings */
+    border: 0;
+    padding: 10px;
+    margin: 15px 0; /* Corrección del margen */
+  }
+
+  .button_login  {
+    font-family: $fontAsap;
+    cursor: pointer;
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    width: 150px;
+    border: 0;
+    padding: 10px 0;
+    margin-top: 10px;
+    border-radius: 5px;
+    margin-right: 20px;
+    background-color: rgba($blueQueen, 0.5);
+    transition: background-color 300ms; /* Cambio de @include a transition */
+  
+    &:hover {
+      background-color: rgba($blueQueen, 0.8);
+    }
+  }
+
+  &.show-registration {
+    transform: rotateY(180deg);
+    pointer-events: none; /* Deshabilita los eventos en la tarjeta al mostrar el formulario de registro */
+    transition: transform 0.6s ease-in-out;
+  }
+
+  .registration-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
+    transition: transform 0.6s ease-in-out;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@keyframes wawes { /* Corrección de @include */
+  from { transform: rotate(0); }
+  to { transform: rotate(360deg); }
+}
+
+a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.6); /* Corrección de la sintaxis de color */
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  font-size: 12px;
+}

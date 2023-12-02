@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 export default function Preference(){
     const [selectedCategories, setSelectedCategories] = useState([]);
 
+    const navigate = useNavigate();
     // Manejador de clic para agregar la categoría al array
     const handleCategoryClick = (category) => {
         setSelectedCategories(prevCategories => {
@@ -52,7 +54,7 @@ export default function Preference(){
                     </article>
                 </section>
                 <div className="section preferences__content">
-                    <button className="preferences__content__button">
+                    <button className="preferences__content__button" >
                         Siguiente
                     </button>
                 </div>

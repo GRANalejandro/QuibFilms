@@ -24,6 +24,7 @@
             white-space: nowrap;
             overflow-x: auto;
             &__item{
+                position: relative;
                 min-width: 29vmin;
                 height: 100%;
                 margin-right: 10px;
@@ -37,6 +38,17 @@
                 }
                 &__text{
                     overflow: hidden;
+                }
+                &__modal-element{
+                    display: none;
+                }
+                &__modal-element .active--modal{
+                    position: absolute;
+                    top: 0px;
+                    left: 100%;
+                    width: 200%;
+                    height: 200%;
+                    background-color: lightgreen;
                 }
             }
         }

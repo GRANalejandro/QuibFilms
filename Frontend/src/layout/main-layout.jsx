@@ -5,15 +5,48 @@ import MainHeader from "../components/main/main-header";
 
 import axios from 'axios';
 
-
-
-
-
 export default function MainLayout() {
-    
+
+    const [inputValue, setInputValue] = useState('');
+    const [filteredMovies, setFilteredMovies] = useState([]);
+    const [isInputActive, setIsInputActive] = useState(false);
+
+    const handleInputChange = (event) => {
+        setInputValue(event.target.value);
+    };
+
+    useEffect(() => {
+        const buscarPorInput = async () => {
+            try {
+                const response = await axios.get(`https://www.omdbapi.com/?s=${inputValue}&apikey=8eb91ea6`);
+                if (response.data.Search) {
+                    setFilteredMovies(response.data.Search);
+                }
+            } catch (error) {
+                console.error('Error al obtener películas:', error);
+            }
+        };
+
+        buscarPorInput();
+    }, [inputValue]);
+
+    useEffect(() => {
+        const tendencias = async () => {
+            try {
+                const respuesta = await axios.get('http://www.omdbapi.com/?i=tt3896198&apikey=8eb91ea6');
+                if (respuesta.data.Search);
+                setPeliculas(respuesta.data.Search);
+            }
+            catch (error) {
+                console.error("Error al obtener peliculas: ", error);
+            }
+        };
+        tendencias();
+    }, [])
+
 
     // Combina las listas de películas
-    
+
     const obRomance = [
         {
             photo: 'https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2019/07/diario-noa.jpg?tf=1080x',
@@ -128,13 +161,27 @@ export default function MainLayout() {
         }
     ];
 
+    const filteredMoviesImages = {};
+
+    // Filtra las películas para cada categoría y limita a las primeras 3
+
+    const categorys = ['Romance', 'Accion', 'Aventura']
+
+    categorys.forEach(category => {
+        filteredMoviesImages[category] = obRomance
+            .concat(obAventura)
+            .concat(obAccion)
+            .filter(movie => movie.Category === category)
+            .slice(0, 3);
+    });
+
     const buscarPorInput = () => {
         const resultados = allMovies.filter((movie) =>
-          movie.title.toLowerCase().includes(inputValue.toLowerCase()) ||
-          movie.clasification.toLowerCase().includes(inputValue.toLowerCase())
+            movie.title.toLowerCase().includes(inputValue.toLowerCase()) ||
+            movie.clasification.toLowerCase().includes(inputValue.toLowerCase())
         );
         setFilteredMovies(resultados);
-      };
+    };
 
 
 
@@ -142,21 +189,27 @@ export default function MainLayout() {
 
 
 
-      const categorys = ['Romance', 'Accion', 'Aventura']
+
 
 
     // if Value.include(obAventura.title) && Value.include(obAventura.clasification)
-    const [isInputActive, setIsInputActive] = useState(false);
+    const [isInputActive2, setIsInputActive2] = useState(false);
+
+    const [isInputActive3, setIsInputActive3] = useState(false);
 
 
     const handleInputFocus = () => {
-        setIsInputActive(true);
-      };
-    
-      const handleInputBlur = () => {
-        setIsInputActive(false);
-      };
-    
+        setIsInputActive2(true);
+    };
+
+    const handleInputBlur = () => {
+        setIsInputActive2(false);
+    };
+
+    const toggleActiveModal = () => {
+        setIsInputActive3(!isInputActive3);
+    };
+
 
     return (
         <>
@@ -170,10 +223,10 @@ export default function MainLayout() {
 
             <main className="main container-fluid p-0">
                 {
-                    false && (<section className={`modal-input ${isInputActive ? 'active' : ''}`}>
+                    false && (<section className={`modal-input ${isInputActive2 ? 'active' : ''}`}>
                         <article className="modal-input__content container">
                             <div className="modal-input__content__item">
-                                
+
                             </div>
                             <div className="modal-input__content__item"></div>
                             <div className="modal-input__content__item"></div>
@@ -182,28 +235,33 @@ export default function MainLayout() {
                         </article>
                     </section>)
                 }
-            
+
                 <section className="background container-fluid p-0 border">
                     <article className="background__item"></article>
                     <article className="background__item"></article>
                 </section>
                 <section className="movies container p-0 border">
                     <article className="movies__content">
-                        <span className="movies__content__text">
-                            Romance
-                        </span>
-                        <div className="movies__content__previews">
+                        <article className="movies__content">
+                            <span className="movies_content_text">
+                                Romance
+                            </span>
+                            <div className="movies_content_previews">
                             {
-                                obRomance.map(({title, photo}) => (
-                                    <div className="movies__content__previews__item">
-                                        <img src={photo} alt="" className="movies__content__previews__item__image" />
+                                obRomance.map(({ title, photo }, index) => (
+                                    <div className="movies__content__previews__item" key={index}>
+                                        <img src={photo} alt="" className="movies__content__previews__item__image" onClick={toggleActiveModal}/>
                                         <div className="span movies__content__previews__item__text">
                                             <span>{title}</span>
+                                        </div>
+                                        <div className="movies__content__previews__item__modal-element">
+                                            
                                         </div>
                                     </div>
                                 ))
                             }
-                        </div>
+                            </div>
+                        </article>
                     </article>
                     <article className="movies__content">
                         <span className="movies__content__text">
@@ -211,11 +269,14 @@ export default function MainLayout() {
                         </span>
                         <div className="movies__content__previews">
                             {
-                                obAccion.map(({title, photo}) => (
-                                    <div className="movies__content__previews__item">
-                                        <img src={photo} alt="" className="movies__content__previews__item__image" />
+                                obAccion.map(({ title, photo }, index) => (
+                                    <div className="movies__content__previews__item" key={index}>
+                                        <img src={photo} alt="" className="movies__content__previews__item__image" onClick={toggleActiveModal}/>
                                         <div className="span movies__content__previews__item__text">
                                             <span>{title}</span>
+                                        </div>
+                                        <div className={`movies__content__previews__item__modal-element ${isInputActive3 ? 'active__modal' : ''}`}>
+                                            
                                         </div>
                                     </div>
                                 ))
@@ -228,11 +289,14 @@ export default function MainLayout() {
                         </span>
                         <div className="movies__content__previews">
                             {
-                                obAventura.map(({title, photo}) => (
-                                    <div className="movies__content__previews__item">
-                                        <img src={photo} alt="" className="movies__content__previews__item__image" />
+                                obAventura.map(({ title, photo }, index) => (
+                                    <div className="movies__content__previews__item" key={index}>
+                                        <img src={photo} alt="" className="movies__content__previews__item__image" onClick={toggleActiveModal}/>
                                         <div className="span movies__content__previews__item__text">
                                             <span>{title}</span>
+                                        </div>
+                                        <div className={`movies__content__previews__item__modal-element ${isInputActive3 ? 'active__modal' : ''}`}>
+                                            
                                         </div>
                                     </div>
                                 ))
@@ -244,13 +308,26 @@ export default function MainLayout() {
                             Kids
                         </span>
                         <div className="movies__content__previews">
-                            <div className="movies__content__previews__item"></div>
-                            <div className="movies__content__previews__item"></div>
-                            <div className="movies__content__previews__item"></div>
-                            <div className="movies__content__previews__item"></div>
-                            <div className="movies__content__previews__item"></div>
-                            <div className="movies__content__previews__item"></div>
-                            <div className="movies__content__previews__item"></div>
+                            {
+                                categorys.map(category => (
+                                    <>
+                                        {filteredMoviesImages[category].map(({ title, photo }, index) => (
+                                            <div className="movies__content__previews__item" key={index}>
+                                                <img src={photo} alt="" className="movies__content__previews__item__image" onClick={toggleActiveModal}/>
+                                                <div className="span movies__content__previews__item__text">
+                                                    <span>{title}</span>
+                                                </div>
+                                                <div className="movies__content__previews__item__modal-element ">
+                                                    Modal
+                                                </div>
+                                                <div className={`movies__content__previews__item__modal-element ${isInputActive3 ? 'active__modal' : ''}`}>
+                                            
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </>
+                                ))
+                            }
                         </div>
                     </article>
                     <article className="movies__content">
