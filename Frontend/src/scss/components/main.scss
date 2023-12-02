@@ -19,14 +19,14 @@
 
         }
         &__previews{
+            display: flex;
             height: 90px;
             white-space: nowrap;
             overflow-x: auto;
             border: 1px solid black;
 
             &__item{
-                display: inline-block;
-                width: 132px;
+                min-width: 132px;
                 height: 100%;
                 margin-right: 10px;
                 border: 1px solid black;

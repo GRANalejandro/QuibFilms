@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import './App.css'
-import Main from './layout/main'
+
 import Preference from './layout/preference'
+import MainLayout from './layout/main-layout'
+
 
 
 function App() {
@@ -9,7 +11,7 @@ function App() {
 
   return (
     <>
-      <Preference/>
+      <MainLayout/>
     </>
   )
 }

@@ -1,6 +1,20 @@
+import React, { useState } from 'react';
 import '../scss/components/preference.scss';
 
 export default function Preference(){
+    const [selectedCategories, setSelectedCategories] = useState([]);
+
+    // Manejador de clic para agregar la categoría al array
+    const handleCategoryClick = (category) => {
+        setSelectedCategories(prevCategories => {
+          if (!prevCategories.includes(category)) {
+            return [...prevCategories, category];
+          }
+          return prevCategories;
+        });
+        console.log(selectedCategories)
+    };
+
     return(
         <>
             <main className="preferences container p-0">
@@ -11,9 +25,9 @@ export default function Preference(){
                 </section>
                 <section className="preferences__content">
                     <article className="preferences__content__category">
-                        <div className="preferences__content__category__items"></div>
-                        <div className="preferences__content__category__items"></div>
-                        <div className="preferences__content__category__items"></div>
+                        <div className="preferences__content__category__items" onClick={() => handleCategoryClick('Aventura')}>Aventura</div>
+                        <div className="preferences__content__category__items" onClick={() => handleCategoryClick('Accion')}>Accion</div>
+                        <div className="preferences__content__category__items" onClick={() => handleCategoryClick('Romance')}>Romance</div>
                         <div className="preferences__content__category__items"></div>
                         <div className="preferences__content__category__items"></div>
                         <div className="preferences__content__category__items"></div>

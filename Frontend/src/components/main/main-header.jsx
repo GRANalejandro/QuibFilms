@@ -3,9 +3,11 @@ export default function MainHeader(){
         <header className="header">
             <div className="container-header">
                 <div className="logo"></div>
-                <div className="input"></div>
+                <div className="input">
+                    <input type="text" />
+                </div>
             </div>
-            <div className="container-header">
+            {/* <div className="container-header">
                 <nav className="menu">
                     <ul className="menu__content">
                         <li className="menu__content__item">Inicio</li>
@@ -14,7 +16,7 @@ export default function MainHeader(){
                         <li className="menu__content__item">Registrarse</li>
                     </ul>
                 </nav>
-            </div>
+            </div> */}
         </header>
     )
 }
