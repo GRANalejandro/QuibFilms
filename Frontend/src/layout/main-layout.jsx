@@ -154,9 +154,18 @@ export default function MainLayout() {
             />
 
             <main className="main container-fluid p-0">
-                <section className={`modal-input ${isInputActive ? 'active' : ''}`}>
-
-                </section>
+                {
+                    true && (<section className={`modal-input ${isInputActive ? 'active' : ''}`}>
+                        <article className="modal-input__content container">
+                            <div className="modal-input__content__item"></div>
+                            <div className="modal-input__content__item"></div>
+                            <div className="modal-input__content__item"></div>
+                            <div className="modal-input__content__item"></div>
+                            <div className="modal-input__content__item"></div>
+                        </article>
+                    </section>)
+                }
+            
                 <section className="background container-fluid p-0 border">
                     <article className="background__item"></article>
                     <article className="background__item"></article>

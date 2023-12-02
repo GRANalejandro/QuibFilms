@@ -50,8 +50,22 @@
     position: fixed;
     inset: calc(0% - -56px) 0 0 0;
     background-color: #032342;
+
+    &__content{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        &__item{
+            width: 39vmin;
+            height: 28vmin;
+            margin: 1px 11px 11px 1px;
+            border: 4px solid white;        
+        }
+    }
 }
 
 .main:has(.active){
     max-height: 100vh;
 }
+
