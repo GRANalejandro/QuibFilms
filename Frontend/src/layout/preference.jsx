@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../scss/components/preference.scss';
 
 export default function Preference(){
     const [selectedCategories, setSelectedCategories] = useState([]);
